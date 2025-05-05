@@ -18,6 +18,9 @@ CREATE TABLE publishing (
     CONSTRAINT pk_publishing PRIMARY KEY (pub_id)
 );
 
+ALTER TABLE publishing DROP CONSTRAINT pk_publishing
+
+
 CREATE TABLE author (
     author_id SMALLINT UNSIGNED AUTO_INCREMENT NOT NULL,
     author VARCHAR(40) NOT NULL,
@@ -87,7 +90,32 @@ CREATE TABLE genre_to_book (
 -- ALTER TABLE publishing AUTO_INCREMENT = 1;
 
 
-ALTER TABLE book 
-MODIFY qty SMALLINT UNSIGNED; 
+-- ALTER TABLE book 
+-- MODIFY qty SMALLINT UNSIGNED; 
+
+-- ALTER TABLE publishing CHANGE pub_id publishing_id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE publishing
+MODIFY publishing_id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT;
+
 
 -- stephen king, j.k rowling, r.l stine, jeffery patrick kinney, (coraline) neil gaiman, 
+
+-- ALTER TABLE publishing
+-- DROP PRIMARY KEY,
+-- ADD CONSTRAINT pk_publishing PRIMARY KEY (publishing_id);
+
+-- ALTER TABLE book
+-- ADD CONSTRAINT fk_publishing
+-- FOREIGN KEY (publishing_id) REFERENCES publishing(publishing_id);
+
+-- SELECT
+--     TABLE_NAME,
+--     COLUMN_NAME,
+--     CONSTRAINT_NAME, 
+--     REFERENCED_TABLE_NAME,
+--     REFERENCED_COLUMN_NAME
+-- FROM 
+--     INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+-- WHERE REFERENCED_TABLE_NAME = 'publishing'
+-- AND TABLE_SCHEMA = 'librarydb';

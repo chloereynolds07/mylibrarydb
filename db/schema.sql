@@ -119,3 +119,40 @@ MODIFY publishing_id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT;
 --     INFORMATION_SCHEMA.KEY_COLUMN_USAGE
 -- WHERE REFERENCED_TABLE_NAME = 'publishing'
 -- AND TABLE_SCHEMA = 'librarydb';
+
+SELECT title, qty FROM book 
+WHERE qty > 10;
+
+SELECT title, binding FROM book 
+WHERE binding = 'paperback';
+
+SELECT title, binding FROM book 
+WHERE binding = 'hardback';
+
+SELECT title, binding FROM book 
+WHERE binding = 'audio';
+
+SELECT title, binding FROM book 
+WHERE binding = 'e-book';
+
+SELECT binding, COUNT(*) AS total
+FROM book 
+GROUP BY binding;
+
+SELECT b.title
+FROM book b 
+JOIN author a ON b.author_id = a.author_id 
+WHERE a.author = 'Suzanne Collins';
+
+SELECT b.title
+FROM book b 
+JOIN author a ON b.author_id = a.author_id 
+WHERE a.author = 'Gege Akutami'
+ORDER BY b.book_id;
+
+SELECT b.title
+FROM book b 
+JOIN author a ON b.author_id = a.author_id 
+WHERE a.author = 'Jeff Kinney';
+
+ALTER TABLE author RENAME COLUMN author TO author_name;

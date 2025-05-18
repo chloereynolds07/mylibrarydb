@@ -12,5 +12,9 @@ router.get('/:id', (req, res) => {
     dao.findBooksById(res, dao.table, req.params.id)
 })
 
+router.post('/post', (req, res)=> {
+    dao.create(req, res, dao.table)
+})
+
 
 module.exports = router
